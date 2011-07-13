@@ -3,14 +3,16 @@ CFLAGS=-g -Os -Wall -mcall-prologues -mmcu=atmega328p
 OBJ2HEX=avr-objcopy 
 TARGET=convik
 
-OBJS=main.o
+OBJS=main.o core/pwm.o
 
-%.obj: %.o
-	avr-gcc -g -Os -Wall -mcall-prologues -mmcu=atmega328p -c $< -o $@
+all: $(TARGET).hex
 
-$(TARGET).hex: $(OBJS)
-	$(OBJ2HEX) -R .eeprom -O ihex $(OBJS) $(TARGET).hex
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f *.o *.objs *.hex
+$(TARGET).hex : $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+	$(OBJ2HEX) -R .eeprom -O ihex $(TARGET) $(TARGET).hex
 
+clean :
+	rm -f *.hex *.obj *.o */*.o
