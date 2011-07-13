@@ -15,4 +15,4 @@ $(TARGET).hex : $(OBJS)
 	$(OBJ2HEX) -R .eeprom -O ihex $(TARGET) $(TARGET).hex
 
 clean :
-	rm -f *.hex *.obj *.o */*.o
+	rm -f *.hex *.obj *.o */*.o $(TARGET)
