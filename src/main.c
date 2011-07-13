@@ -17,19 +17,19 @@ void delayms(uint16_t millis) {
 int main(void) {
 	DDRB |= 1<<PB0;
 	pwm_init();
-	pwm_set(0, 0);
+	pwm_set(0);
 
-	uint8_t val = 0;
+	uint16_t val = 0;
 
 	while(1) {
-		while(val < 0xFF) {
+		while(val < 500) {
 			val++;
-			pwm_set((val>>6), (val<<2)&0xFF);
+			pwm_set(val);
 			delayms(1);
 		}
 		while(val > 0) {
 			val--;
-			pwm_set((val>>6), (val<<2)&0xFF);
+			pwm_set(val);
 			delayms(1);
 		}	
 	}
