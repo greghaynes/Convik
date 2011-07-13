@@ -1,6 +1,6 @@
 /* Taken from http://paul.graysonfamily.org/thoughts/avrlinux/ */
 
-#define F_CPU 80000000UL
+#define F_CPU 10000000UL
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -18,7 +18,7 @@ int main(void) {
 		PORTB &= ~(1<<PB0); /* LED on */
 		delayms(100);
 		PORTB |= 1<<PB0; /* LED off */
-		delayms(900);
+		delayms(100);
 	}
 	return 0;
 }
