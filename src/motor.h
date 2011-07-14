@@ -27,5 +27,7 @@ void motor_winding_set(uint8_t winding, uint8_t state);
 
 void motor_init(void);
 
+uint8_t motor_state_next(void);
+
 #endif
 
