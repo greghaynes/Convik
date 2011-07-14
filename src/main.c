@@ -1,8 +1,6 @@
-/* Taken from http://paul.graysonfamily.org/thoughts/avrlinux/ */
-
-#define F_CPU 10000000UL
-
+#include "config.h"
 #include "core/pwm.h"
+#include "core/usart.h"
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -25,13 +23,15 @@ int main(void) {
 		while(val < 500) {
 			val++;
 			pwm_set(val);
-			delayms(1);
+			delayms(5);
 		}
+		usart_send_char('a');
 		while(val > 0) {
 			val--;
 			pwm_set(val);
-			delayms(1);
+			delayms(5);
 		}	
+		usart_send_char('b');
 	}
 	return 0;
 }
