@@ -14,6 +14,7 @@ void delayms(uint16_t millis) {
 
 int main(void) {
 	DDRB |= 1<<PB0;
+	usart_init();
 	pwm_init();
 	pwm_set(0);
 
@@ -23,13 +24,13 @@ int main(void) {
 		while(val < 500) {
 			val++;
 			pwm_set(val);
-			delayms(5);
+			delayms(1);
 		}
 		usart_send_char('a');
 		while(val > 0) {
 			val--;
 			pwm_set(val);
-			delayms(5);
+			delayms(1);
 		}	
 		usart_send_char('b');
 	}
