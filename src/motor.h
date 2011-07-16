@@ -29,5 +29,9 @@ void motor_init(void);
 
 uint8_t motor_state_next(void);
 
+// Throttle is a valud from 0 - 255 where 255 is 100%
+void motor_set_throttle(uint8_t throttle);
+uint8_t motor_get_throttle(void);
+
 #endif
 

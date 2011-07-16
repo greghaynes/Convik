@@ -131,3 +131,12 @@ uint8_t motor_state_next(void) {
 	return 0;
 }
 
+// TODO
+void motor_set_throttle(uint8_t throttle) {
+}
+
+// TODO
+uint8_t motor_get_throttle(void) {
+	return 0;
+}
+
