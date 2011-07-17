@@ -3,6 +3,8 @@
 
 #include <avr/io.h>
 
+void proto_init(void);
+
 void proto_got_char(char ch);
 
 #endif
