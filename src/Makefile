@@ -3,7 +3,7 @@ CFLAGS=-g -Os -Wall -mcall-prologues -mmcu=atmega328p
 OBJ2HEX=avr-objcopy 
 TARGET=convik
 
-OBJS=main.o core/pwm.o core/usart.o motor.o proto.o
+OBJS=main.o core/pwm.o core/usart.o utils/char_fifo.o motor.o proto.o
 
 all: $(TARGET).hex
 

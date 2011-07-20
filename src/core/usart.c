@@ -1,7 +1,14 @@
 #include "../config.h"
 #include "usart.h"
 
-#define UBRR F_CPU/16/BAUDRATE-1
+#define UBRR F_CPU/16/USART_BAUDRATE-1
+
+struct usart_ctl {
+	char in_buff[USART_BUFF_SIZE];
+	char out_buff[USART_BUFF_SIZE];
+};
+
+static struct usart_ctl _usart_ctl;
 
 void usart_init() {
 	int ubrr = UBRR;
