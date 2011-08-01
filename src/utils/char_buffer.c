@@ -23,3 +23,11 @@ uint8_t char_buffer_append(struct char_buffer *buff, char *data, uint8_t length)
 	return 0;
 }
 
+void char_buffer_reset(struct char_buffer *buff) {
+	buff->end_ndx = 0;
+}
+
+uint8_t char_buffer_length(struct char_buffer *buff) {
+	return buff->end_ndx;
+}
+

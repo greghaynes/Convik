@@ -14,5 +14,11 @@ void char_buffer_init(struct char_buffer *buff, char *data_buff, uint8_t size);
 /* Returns 1 if not enough space available. Returns 0 otherwise. */
 uint8_t char_buffer_append(struct char_buffer *buff, char *data, uint8_t length);
 
+/* Reset buffer */
+void char_buffer_reset(struct char_buffer *buff);
+
+/* Returns length of char buffer (bytes) */
+uint8_t char_buffer_length(struct char_buffer *buff);
+
 #endif
 
