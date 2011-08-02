@@ -7,6 +7,8 @@
  * Must call before use.  */
 void usart_init();
 
+struct char_fifo *usart_recv_fifo(void);
+
 /* Asynchronously sends char over serial.
  * Returns 1 for full buffer, 0 otherwise.  */
 uint8_t usart_send_char(unsigned char ch);

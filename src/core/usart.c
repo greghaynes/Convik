@@ -26,9 +26,10 @@ void usart_isr_udre_disable(void) {
 
 /* USART Receive byte interrupt handler */
 ISR(USART_RX_vect) {
+	char_fifo_push(&_usart_ctl.in_fifo, (char)UDR0);
 }
 
-/* USART Data register empty handler */
+/* USART Data register empty handler (send byte) */
 ISR(USART_UDRE_vect) {
 	// Check that data register is empty
 	// If not, return
@@ -66,6 +67,10 @@ void usart_init() {
 
 	// Set frame 8 n 2
 	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+}
+
+struct char_fifo *usart_recv_fifo(void) {
+	return &_usart_ctl.in_fifo;
 }
 
 uint8_t usart_send_char(unsigned char ch) {
