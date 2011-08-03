@@ -18,21 +18,9 @@ int main(void) {
 	pwm_init();
 	pwm_set(0);
 
-	uint16_t val = 0;
-
 	while(1) {
-		while(val < 500) {
-			val++;
-			pwm_set(val);
-			delayms(1);
-		}
-		usart_send_char('a');
-		while(val > 0) {
-			val--;
-			pwm_set(val);
-			delayms(1);
-		}	
-		usart_send_char('b');
+		if(char_fifo_is_empty(usart_recv_fifo()))
+			usart_send_char(char_fifo_pop(usart_recv_fifo()));
 	}
 	return 0;
 }
