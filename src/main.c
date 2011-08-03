@@ -1,6 +1,7 @@
 #include "config.h"
 #include "core/pwm.h"
 #include "core/usart.h"
+#include "utils/char_fifo.h"
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -17,10 +18,12 @@ int main(void) {
 	usart_init();
 	pwm_init();
 	pwm_set(0);
+	char ch;
 
 	while(1) {
 		if(char_fifo_is_empty(usart_recv_fifo()))
-			usart_send_char(char_fifo_pop(usart_recv_fifo()));
+			char_fifo_pop(usart_recv_fifo(), &ch);
+			usart_send_char(ch);
 	}
 	return 0;
 }
