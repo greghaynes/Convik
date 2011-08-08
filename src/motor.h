@@ -9,29 +9,16 @@ enum motor_winding_t {
 	MOTOR_WINDING_C = 2
 };
 
-enum motor_winding_state_t {
-	MOTOR_WINDING_STATE_FLOAT = 0,
-	MOTOR_WINDING_STATE_POS = 1,
-	MOTOR_WINDING_STATE_NEG = 2
-};
+void motor_set_state(uint8_t state);
 
-uint8_t motor_state_create(uint8_t a,
-                           uint8_t b,
-                           uint8_t c);
+void motor_set_winding_state(uint8_t winding, uint8_t state);
 
-uint8_t motor_state_get_winding(uint8_t winding, uint8_t state);
 
-void motor_state_set(uint8_t state);
+uint8_t motor_get_winding_state(uint8_t winding, uint8_t state);
 
-void motor_winding_set(uint8_t winding, uint8_t state);
+uint8_t motor_get_state(void);
 
 void motor_init(void);
-
-uint8_t motor_state_next(void);
-
-// Throttle is a valud from 0 - 255 where 255 is 100%
-void motor_set_throttle(uint8_t throttle);
-uint8_t motor_get_throttle(void);
 
 #endif
 
