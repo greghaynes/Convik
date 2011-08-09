@@ -1,3 +1,9 @@
+/**
+ * Copyright Gregory Haynes <greg@greghaynes.net> 2011
+ * All source code is released under the terms of the MIT License.
+ * See LICENSE for more information.
+ */
+
 #include "char_buffer.h"
 
 void char_buffer_init(struct char_buffer *buff, char *data_buff, uint8_t size) {

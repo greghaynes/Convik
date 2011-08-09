@@ -1,3 +1,9 @@
+/**
+ * Copyright Gregory Haynes <greg@greghaynes.net> 2011
+ * All source code is released under the terms of the MIT License.
+ * See LICENSE for more information.
+ */
+
 #include "commands.h"
 
 void command_motor_set_throttle(char *args, uint8_t length);
