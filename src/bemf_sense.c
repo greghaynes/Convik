@@ -5,13 +5,19 @@
  */
 
 #include "bemf_sense.h"
+#include "motor_state.h"
 #include "core/acmp.h"
 
-void bemf_sense_init(void) {
-	acmp_init();
+void bemf_sense_acmp_triggered(void) {
+	motor_state_next();
+}
 
+void bemf_sense_init(void) {
 	DDRC |= (1<<DDC0) | (1<<DDC1);
 	PORTC &= ~((1<<PORTC0) | (1<<PORTC1));
+
+	acmp_init();
+	acmp_set_handler(bemf_sense_acmp_triggered);
 }
 
 void bemf_sense_set_winding(uint8_t winding) {
